@@ -1,0 +1,125 @@
+// reset file
+@import "./_reset.scss";
+
+/* variables*/
+$montserrat: "Montserrat", sans-serif;
+$fraunces: "Fraunces", serif;
+$Dark-cyan: hsl(158, 36%, 37%);
+$Cream: hsl(30, 38%, 92%);
+$Very-dark-blue: hsl(212, 21%, 14%);
+$Dark-grayish-blue: hsl(228, 12%, 48%);
+$White: hsl(0, 0%, 100%);
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+// body styling
+body {
+  @include flex-center();
+  min-height: 100vh;
+  background: linear-gradient(190deg, rgb(0, 89, 84) 0%, rgb(58, 118, 95) 100%);
+}
+
+// container syling
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 600px;
+  max-height: 450px;
+  background-color: white;
+  box-shadow: 0px 0px 30px black;
+  transition: 0.9s ease;
+  border-radius: 10px;
+  overflow: hidden;
+  //hover effect for the container
+  &:hover {
+    box-shadow: 0px 0px 150px black;
+    transition: 0.4s;
+  }
+  .photos-desktop img {
+    max-width: 300px;
+  }
+  .photos-desktop .mobile-photo {
+    display: none;
+  }
+}
+
+.product-info {
+  padding: 2rem;
+  .product-desc {
+    h3 {
+      font-family: $montserrat;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      color: $Dark-grayish-blue;
+      letter-spacing: 5px;
+      line-height: 3px;
+      font-size: 14px;
+    }
+    h1 {
+      font-family: $fraunces;
+      font-weight: 700;
+      font-size: 2rem;
+      margin: 1rem 0;
+    }
+    p {
+      color: $Very-dark-blue;
+      font-family: $montserrat;
+      margin: 1rem 0 0;
+      font-size: 14px;
+    }
+  }
+  .product-pricing {
+    @include flex-center();
+    justify-content: start;
+    margin: 1rem 0;
+    h2 {
+      color: $Dark-cyan;
+      font-family: $fraunces;
+      font-weight: 700;
+      font-size: 2rem;
+      margin: 1rem 1rem 1rem 0;
+    }
+    p {
+      color: $Dark-grayish-blue;
+      text-decoration: line-through;
+    }
+  }
+
+  button {
+    @include flex-center();
+    gap: 10px;
+    text-decoration: unset;
+    background-color: $Dark-cyan;
+    color: white;
+    font-weight: 700;
+    padding: 1rem;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    transition: 0.3s ease-in-out;
+    &:hover {
+      background-color: $Very-dark-blue;
+    }
+  }
+}
+
+@media (max-width: 610px) {
+  .container {
+    grid-template-columns: repeat(1, 1fr);
+    margin: 0 1rem;
+    max-height: 80%;
+    .photos-desktop img {
+      max-width: 100%;
+    }
+    .photos-desktop .mobile-photo {
+      display: block;
+    }
+    .desk-photo {
+      display: none;
+    }
+  }
+}
